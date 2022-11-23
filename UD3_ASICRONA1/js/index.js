@@ -100,9 +100,13 @@ function setDamage(index){
         addAtributes()
         let selectedPokemon = pokemon[index];
         let total_damage = selectedPokemon.base_damage + Math.floor(Math.random()*(selectedPokemon.max_damage-1+selectedPokemon.min_damage)+selectedPokemon.min_damage)
-        
+        console.log(total_damage)
+    }
+    else{
+        console.log(`Please enter a number not greater than ${pokemon.length-1}`);
     }
 }
+
 
 
 //8. Nuestro Pokemon Master quiere estar preparado para pelear, para ello necesita que lo apoyes a 
