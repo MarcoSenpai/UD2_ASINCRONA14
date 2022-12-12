@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAREA 13</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <h1>MULTIPLAN S.A.C</h1>
+        <p>Distancia <input type="text" ng-model="distance" id="distance"></p>
+        <p>{{distance}}</p>
+        <p>Tarifa en bruto: {{calcularTarifa()}}</p>
+        <script>
+            let app = angular.module("myApp",[]);
+
+            app.controller("myCtrl",function($scope){
+                $scope.distance = document.getElementById("distance").value;
+                $scope.calcularTarifa = function(){   
+                    let tarifa = 0;
+                    if($scope.distance <= 300)
+                    {
+                        tarifa = 250
+                        return tarifa;
+                    } 
+                    else if ($scope.distance <= 1000)
+                    {
+                        tarifa=250+(30*($scope.distance-300));
+                        if(tarifa>500){
+                            tarifa=tarifa*0.90;
+                        }
+                        return tarifa;
+                    } else{
+                        tarifa = 250 + (30*700) + (20*($scope.distance-100));
+                        //Promocion
+                        tarifa = 0.90*tarifa;
+                        return tarifa;
+                    }
+                }
+
+                
+            })
+        </script>
+    </div>
+    
+</body>
+</html>
